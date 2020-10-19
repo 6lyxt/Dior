@@ -1,5 +1,5 @@
 # Dior 💎
-a minecraft mod installer &amp; downloader 🚀💖
+a minecraft mod installer &amp; downloader 🚀💎
 
 ## How to use
 1. Open the file called `"config.yml"`. Make sure its located in the same folder as your jar executable.
