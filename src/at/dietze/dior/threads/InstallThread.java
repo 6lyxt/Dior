@@ -1,7 +1,7 @@
 package at.dietze.dior.threads;
 
-
 import at.dietze.dior.Dior;
+import at.dietze.dior.configs.ConfigMain;
 
 import java.io.*;
 import java.net.URL;
@@ -9,10 +9,11 @@ import java.net.URLConnection;
 
 public class InstallThread extends Thread {
 
+    /* Whole process of downloading, saving & naming the file */
     private static void downloadFile(String address, String file, String filename) {
         String localFileName = file + filename;
         OutputStream out = null;
-        URLConnection conn = null;
+        URLConnection conn;
         InputStream in = null;
         try {
             URL url = new URL(address);
@@ -40,16 +41,18 @@ public class InstallThread extends Thread {
         }
     }
 
+    /* Saving files into the executers mincraft folder */
     public void run() {
         String path = getPath();
         String ver = getVersion();
         String mcPath = "/.minecraft/mods/" + ver + "/";
         File file = new File(path + mcPath);
         if (!file.exists()) {
+            //noinspection ResultOfMethodCallIgnored
             file.mkdir();
         }
         try {
-            downloadFile(getDownload(), file.getAbsolutePath(), getDownloadName());
+            downloadFile(getDownload(), file.getAbsolutePath(), file.getName());
         } catch (Exception e) {
             e.printStackTrace();
             error();
@@ -67,20 +70,18 @@ public class InstallThread extends Thread {
     }
 
 
+    /* Helpful methods */
     private void error() {
         Dior.INSTALL_THREAD.stop();
     }
 
-    public String getVersion(){
-        return "";
+    private String getDownload(){
+        return new ConfigMain().parseConfigData()[0];
     }
 
-    public String getDownloadName(){
-        return "";
+    private String getVersion(){
+        return new ConfigMain().parseConfigData()[1];
     }
 
-    public String getDownload(){
-        return "";
-    }
 }
 
