@@ -26,8 +26,8 @@ public class ConfigMain {
     public String[] parseConfigData(){
         String data = getConfigData();
         if(data.equalsIgnoreCase("An error occured")) return null;
-        String url = data.substring(data.lastIndexOf("URL: "));
-        String version = data.substring(data.lastIndexOf("Version: "));
+        String url = data.substring(data.lastIndexOf("URL:"));
+        String version = data.substring(data.lastIndexOf("Version:"));
 
         return new String[]{url,version};
     }

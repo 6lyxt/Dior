@@ -73,6 +73,7 @@ public class InstallThread extends Thread {
     /* Helpful methods */
     private void error() {
         Dior.INSTALL_THREAD.stop();
+        Dior.FRAME.setName("Dior - Installation Failed!");
     }
 
     private String getDownload(){
