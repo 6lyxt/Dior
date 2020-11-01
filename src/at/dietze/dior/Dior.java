@@ -13,7 +13,8 @@ public class Dior {
 
     /* Main Method */
     public static void main(String[] args){
-        new Dior().initFrame();
+        Dior dior = new Dior();
+        dior.initFrame();
     }
 
     /* Mainframe construction */
